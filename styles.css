@@ -1,3 +1,4 @@
+/* General reset and styling */
 body {
     font-family: Arial, sans-serif;
     display: flex;
@@ -5,37 +6,104 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    background: #e0f7fa;
+    background: linear-gradient(135deg, #e0f7fa, #80deea);
+    color: #333;
 }
 
+/* Container styling */
 #weather-container {
     text-align: center;
-    padding: 20px;
+    padding: 30px 25px;
     background: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    max-width: 400px;
+    width: 90%;
+    transition: transform 0.3s ease;
 }
 
+#weather-container:hover {
+    transform: translateY(-3px); /* Slight lift effect */
+}
+
+/* Input styling */
 #city-input {
-    padding: 10px;
-    margin-bottom: 10px;
+    padding: 12px;
+    margin-bottom: 15px;
     width: 100%;
     max-width: 300px;
+    border: 1px solid #b0bec5;
+    border-radius: 6px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+    font-size: 1rem;
 }
 
+#city-input:focus {
+    box-shadow: 0 4px 10px rgba(0, 136, 209, 0.2);
+    border-color: #0288d1;
+    outline: none;
+}
+
+/* Button styling */
 button {
-    padding: 10px 20px;
+    padding: 12px 25px;
     background-color: #0288d1;
     color: white;
     border: none;
-    border-radius: 4px;
+    border-radius: 6px;
     cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 5px 15px rgba(0, 40, 90, 0.15);
 }
 
 button:hover {
     background-color: #0277bd;
+    transform: translateY(-2px); /* Button hover lift effect */
 }
 
+button:active {
+    transform: translateY(1px); /* Slight push down on click */
+    box-shadow: 0 4px 10px rgba(0, 40, 90, 0.2);
+}
+
+/* Weather result display */
 #weather-result {
-    margin-top: 15px;
+    margin-top: 20px;
+    font-size: 1.1rem;
+    color: #555;
+    padding: 15px;
+    border-top: 1px solid #eceff1;
+    animation: fadeIn 0.5s ease forwards;
+    opacity: 0;
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Temperature and condition styling inside weather result */
+#weather-result .temperature {
+    font-size: 2.5rem;
+    color: #0277bd;
+    font-weight: bold;
+    margin: 5px 0;
+}
+
+#weather-result .condition {
+    font-size: 1.2rem;
+    color: #555;
+}
+
+/* Subtle animations for app entrance */
+@keyframes popUp {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+#weather-container {
+    animation: popUp 0.5s ease forwards;
 }
